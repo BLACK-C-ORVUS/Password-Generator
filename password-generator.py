@@ -17,7 +17,7 @@ def generat_paa(all):
 
     else:
         print("\nYour number olded 0 \n")
-# save pass word
+# save password
 def save_pass(password):
     now = datetime.today()
     time = now.strftime("%Y/%b/%d - %H:%M")
@@ -39,7 +39,7 @@ while True :
         choice_save = input("Do you whant save password? [Y/n]")
 
         if choice_save.lower() == "y":
-            save_pass(password)
+            save_pass()
 
         elif choice_save.lower() == "n":
             break
