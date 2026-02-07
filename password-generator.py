@@ -7,7 +7,7 @@ symbol = "~@#$%^&*()}/}"
 number = "0123456789"
 all = char + symbol + number
 
-# genrat password
+# generat password
 def generat_paa(all):
     length = int(input("Enter the lenght of Password : "))
     if length >= 1 :
