@@ -1,56 +1,65 @@
 from random import sample
 from string import ascii_letters
 from datetime import datetime
-# create datda 
+import os
+# character sets
 char = ascii_letters
 symbol = "~@#$%^&*()}/}"
 number = "0123456789"
-all = char + symbol + number
 
-# generat password
-def generat_paa(all):
-    length = int(input("Enter the lenght of Password : "))
+ALL_CHARS = char + symbol + number
+password = None
+
+# Generat password
+def generat_paa(ALL_CHARS):
+    """
+        Generate a random password based on user-defined length.
+    """
+    length = int(input("Enter the lenght of password : "))
     if length >= 1 :
-        password = "".join(sample(all, length))
+        global password
+        password = "".join(sample(ALL_CHARS, length))
         print(f"\n Your password is :{password}\n")
         return password
 
     else:
-        print("\nYour number olded 0 \n")
-# save password
+        print("\nPassword lengtht must be greater then 0!\n")
+# Save password to file
 def save_pass(password):
     now = datetime.today()
     time = now.strftime("%Y/%b/%d - %H:%M")
-    user = input("Enter username for password : ")
-    comment = input("Enter commnet for password : \n")
+    user = input("Enter username for this password : ")
+    comment = input("Enter a commnet for this password : ")
     save = open("password.txt", "a")
     save.write(f"\n{comment} : {user} == {password} , DateTime ==  {time}")
     save.close() 
 
 
 
-
+# Min menu loop
 while True :
-    print("Choose on Option : \n\t1)Create a Password\n\t2)Exit")
-    choice = input("Your Choice : ")
+    os.system("clear")
+    print("Choose on option : \n\t1) Create a password\n\t2) Exit\n")
+    choice = input("Your choice : ") 
 
     if choice == "1":
-        generat_paa(all)
-        choice_save = input("Do you whant save password? [Y/n]")
+        generat_paa(ALL_CHARS)
+        choice_save = input("Do you want save password? [Y/n]: ")
 
         if choice_save.lower() == "y":
-            save_pass()
+            save_pass(password)
 
         elif choice_save.lower() == "n":
+            print("Goodbye...")
             break
         else:
-            print("Your choice is Wrong!\n")
+            print("Invalid choice!\n")
 
 
     elif choice == "2":
-        print("Good By...")
+        print("Goodbye...")
         break
     else:
-        print("\n Your choice is Wrong! \n")
+        print("\n Invalid choice! \n")
     
 
