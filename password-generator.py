@@ -13,7 +13,14 @@ password = None
 # Generat password
 def generat_paa(ALL_CHARS):
     """
-        Generate a random password based on user-defined length.
+    Generate a random password based on user-defined length.
+
+    Args:
+        ALL_CHARS (String): character sets
+
+    Returns:
+       String : Generated password
+
     """
     length = int(input("Enter the lenght of password : "))
     if length >= 1 :
@@ -26,6 +33,12 @@ def generat_paa(ALL_CHARS):
         print("\nPassword lengtht must be greater then 0!\n")
 # Save password to file
 def save_pass(password):
+    """
+    Save the generated password with username and comment to text file.
+    Args:
+        password (String): Generated password
+
+    """
     now = datetime.today()
     time = now.strftime("%Y/%b/%d - %H:%M")
     user = input("Enter username for this password : ")
